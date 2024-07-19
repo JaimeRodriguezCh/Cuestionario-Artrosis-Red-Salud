@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario para Diagnóstico de Artrosis de Cadera</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 20px;
+            padding: 0;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #0056b3;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 144px;
+        }
+        .header-image {
+            display: block;
+            margin: 20px auto;
+            width: 25%;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #e9ecef;
+            border-radius: 5px;
+        }
+        .question p {
+            margin: 0;
+            padding-bottom: 10px;
+        }
+        .question input[type="radio"] {
+            margin-right: 10px;
+        }
+        .question label {
+            margin-right: 20px;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #0056b3;
+            color: #fff;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background: #004494;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 700px;
+            border-radius: 10px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <img src="logo red.png" alt="Logo Empresa" class="logo">
+
+    <div class="container">
+        <h1>Cuestionario para Diagnóstico de Artrosis de Cadera</h1>
+
+        <img src="artro.png" alt="Imagen Título" class="header-image">
+
+        <div class="question rut-question">
+            <p><strong>RUT</strong></p>
+            <p>Por favor, ingrese su RUT sin puntos y con el guion separado. Ejemplo: 12345678 - 9</p>
+            <input type="text" id="rut" name="rut" pattern="\d{1,8}-[0-9Kk]" required>
+        </div>
+
+        <h2>Sintomatología</h2>
+        
+        <div class="question">
+            <p><strong>1. Dolor</strong></p>
+            <p>¿Ha sentido dolor en la cadera en las últimas semanas?</p>
+            <input type="radio" id="dolor_si" name="dolor" value="Sí">
+            <label for="dolor_si">Sí</label>
+            <input type="radio" id="dolor_no" name="dolor" value="No">
+            <label for="dolor_no">No</label>
+        </div>
+        
+        <div class="question">
+            <p><strong>2. Dolor Nocturno</strong></p>
+            <p>¿El dolor en su cadera empeora durante la noche?</p>
+            <input type="radio" id="dolor_nocturno_si" name="dolor_nocturno" value="Sí">
+            <label for="dolor_nocturno_si">Sí</label>
+            <input type="radio" id="dolor_nocturno_no" name="dolor_nocturno" value="No">
+            <label for="dolor_nocturno_no">No</label>
+        </div>
+        
+        <div class="question">
+            <p><strong>3. Dolor Enguinal o Dolor de Inicio de Movimiento</strong></p>
+            <p>¿Siente dolor en la ingle o cuando comienza a moverse después de estar en reposo?</p>
+            <input type="radio" id="dolor_inguinal_si" name="dolor_inguinal" value="Sí">
+            <label for="dolor_inguinal_si">Sí</label>
+            <input type="radio" id="dolor_inguinal_no" name="dolor_inguinal" value="No">
+            <label for="dolor_inguinal_no">No</label>
+        </div>
+        
+        <div class="question">
+            <p><strong>4. Claudicación al Caminar</strong></p>
+            <p>¿Ha notado que cojea o tiene dificultades para caminar debido al dolor en la cadera?</p>
+            <input type="radio" id="claudicacion_si" name="claudicacion" value="Sí">
+            <label for="claudicacion_si">Sí</label>
+            <input type="radio" id="claudicacion_no" name="claudicacion" value="No">
+            <label for="claudicacion_no">No</label>
+        </div>
+        
+        <div class="question">
+            <p><strong>5. Antecedentes Personales (Enfermedades de Cadera o Cirugías Previas)</strong></p>
+            <p>¿Ha tenido alguna enfermedad en la cadera o ha sido operado de la cadera anteriormente?</p>
+            <input type="radio" id="antecedentes_si" name="antecedentes" value="Sí">
+            <label for="antecedentes_si">Sí</label>
+            <input type="radio" id="antecedentes_no" name="antecedentes" value="No">
+            <label for="antecedentes_no">No</label>
+        </div>
+        
+        <div class="question">
+            <p><strong>6. Disminución del Rango Articular</strong></p>
+            <p>¿Ha notado una disminución en su capacidad para mover la cadera en todas las direcciones?</p>
+            <input type="radio" id="rango_articular_si" name="rango_articular" value="Sí">
+            <label for="rango_articular_si">Sí</label>
+            <input type="radio" id="rango_articular_no" name="rango_articular" value="No">
+            <label for="rango_articular_no">No</label>
+        </div>
+        
+        <div class="question">
+            <p><strong>7. Dolor de Rodilla</strong></p>
+            <p>¿Ha experimentado dolor en la rodilla junto con el dolor de cadera?</p>
+            <input type="radio" id="dolor_rodilla_si" name="dolor_rodilla" value="Sí">
+            <label for="dolor_rodilla_si">Sí</label>
+            <input type="radio" id="dolor_rodilla_no" name="dolor_rodilla" value="No">
+            <label for="dolor_rodilla_no">No</label>
+        </div>
+        
+        <div class="question">
+            <p><strong>8. Edad</strong></p>
+            <p>¿Cuál es su edad?</p>
+            <input type="number" id="edad" name="edad" min="0">
+        </div>
+        
+        <div class="question">
+            <p><strong>9. Displasia de Cadera en Familiares</strong></p>
+            <p>¿Algún miembro de su familia ha tenido problemas de displasia de cadera?</p>
+            <input type="radio" id="displasia_familiares_si" name="displasia_familiares" value="Sí">
+            <label for="displasia_familiares_si">Sí</label>
+            <input type="radio" id="displasia_familiares_no" name="displasia_familiares" value="No">
+            <label for="displasia_familiares_no">No</label>
+        </div>
+
+        <h2>Características Cualitativas</h2>
+        
+        <div class="question">
+            <p><strong>1. Sexo</strong></p>
+            <p>¿Cuál es su sexo?</p>
+            <input type="radio" id="sexo_m" name="sexo" value="Masculino">
+            <label for="sexo_m">Masculino</label>
+            <input type="radio" id="sexo_f" name="sexo" value="Femenino">
+            <label for="sexo_f">Femenino</label>
+            <input type="radio" id="sexo_otro" name="sexo" value="Otro">
+            <label for="sexo_otro">Otro</label>
+        </div>
+        
+        <div class="question">
+            <p><strong>2. Estrato Socioeconómico</strong></p>
+            <p>¿En qué estrato socioeconómico se encuentra?</p>
+            <input type="radio" id="estrato_bajo" name="estrato" value="Bajo">
+            <label for="estrato_bajo">Bajo</label>
+            <input type="radio" id="estrato_medio" name="estrato" value="Medio">
+            <label for="estrato_medio">Medio</label>
+            <input type="radio" id="estrato_alto" name="estrato" value="Alto">
+            <label for="estrato_alto">Alto</label>
+        </div>
+        
+        <div class="question">
+            <p><strong>3. Ruralidad (Dirección)</strong></p>
+            <p>¿Vive en una zona rural o urbana?</p>
+            <input type="radio" id="rural" name="ruralidad" value="Rural">
+            <label for="rural">Rural</label>
+            <input type="radio" id="urbana" name="ruralidad" value="Urbana">
+            <label for="urbana">Urbana</label>
+        </div>
+        
+        <div class="question">
+            <p><strong>4. Trabajo</strong></p>
+            <p>¿A qué se dedica?</p>
+            <input type="radio" id="trabajo_fisico" name="trabajo" value="Trabajo físico">
+            <label for="trabajo_fisico">Trabajo físico</label>
+            <input type="radio" id="trabajo_oficina" name="trabajo" value="Trabajo de oficina">
+            <label for="trabajo_oficina">Trabajo de oficina</label>
+            <input type="radio" id="trabajo_desempleado" name="trabajo" value="Desempleado">
+            <label for="trabajo_desempleado">Desempleado</label>
+            <input type="radio" id="trabajo_otro" name="trabajo" value="Otro">
+            <label for="trabajo_otro">Otro</label>
+        </div>
+        
+        <div class="question">
+            <p><strong>5. Actividad Física</strong></p>
+            <p>¿Realiza actividad física regularmente?</p>
+            <input type="radio" id="actividad_si" name="actividad" value="Sí">
+            <label for="actividad_si">Sí</label>
+            <input type="radio" id="actividad_no" name="actividad" value="No">
+            <label for="actividad_no">No</label>
+        </div>
+
+        <button class="submit-btn" type="button" onclick="calcularProbabilidad()">Enviar</button>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <h2>Probabilidad de Artrosis de Cadera</h2>
+            <p id="resultado"></p>
+        </div>
+    </div>
+
+    <script>
+        function calcularProbabilidad() {
+            let probabilidad = 0;
+
+            if (document.getElementById('dolor_si').checked) probabilidad += 8.3;
+            if (document.getElementById('dolor_nocturno_si').checked) probabilidad += 8.3;
+            if (document.getElementById('dolor_inguinal_si').checked) probabilidad += 8.3;
+            if (document.getElementById('claudicacion_si').checked) probabilidad += 12.5;
+            if (document.getElementById('antecedentes_si').checked) probabilidad += 50;
+            if (document.getElementById('rango_articular_si').checked) probabilidad += 3.125;
+            if (document.getElementById('dolor_rodilla_si').checked) probabilidad += 1.562;
+            if (document.getElementById('displasia_familiares_si').checked) probabilidad += 3.125;
+
+            let edad = document.getElementById('edad').value;
+            if (edad > 18 && edad <= 90) {
+                probabilidad += (edad - 18) * (3.125 / 72);
+            }
+
+            if (document.getElementById('sexo_f').checked) probabilidad += 0.078125;
+            if (document.getElementById('trabajo_fisico').checked) probabilidad += 0.078125;
+            if (document.getElementById('estrato_bajo').checked || document.getElementById('estrato_medio').checked) probabilidad += 0.078125;
+            if (document.getElementById('actividad_no').checked) probabilidad += 0.078125;
+            if (document.getElementById('rural').checked) probabilidad += 0.078125;
+
+            document.getElementById('resultado').textContent = 'La probabilidad de tener artrosis de cadera es ' + probabilidad.toFixed(2) + '%.';
+
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        function cerrarModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('modal')) {
+                document.getElementById('modal').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
